@@ -9,8 +9,13 @@ public class TargetController : MonoBehaviour
     Camera cam;
     private RaycastHit hit;
     private bool Hit;
+    private string _nameTag = "ground";
     public GameObject _target;
     public GameObject[] objects;
+    private float PosNewObject;
+    public bool _setObject=true;
+    private Color _color = Color.green;
+ 
 
 
     private void Start()
@@ -19,45 +24,42 @@ public class TargetController : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (MultyRayCast(cam.transform.forward))
+        if (_setObject)
         {
-
-            if (hit.collider.tag == "ground")
+            if (MultyRayCast(cam.transform.forward, Color.green))
             {
-                _target.transform.position = new Vector3(hit.point.x, hit.point.y + 0.01f, hit.point.z);
+                _target.active = true;
+                if (hit.transform.tag == _nameTag)
+                {
+                    _target.transform.position = new Vector3(hit.point.x, hit.point.y + 0.01f, hit.point.z);
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    FloorDetected.Invoke();
+                    CreateObject();
+                }
             }
-            if (Input.GetMouseButtonUp(0))
+            else
             {
-                FloorDetected.Invoke();
-                CreateObject();
+                _target.active = false;
             }
         }
 
     }
 
-    private bool RayCaster()
+    private bool MultyRayCast(Vector3 dir, Color _color)
     {
-        Vector3 forward = Camera.main.transform.TransformDirection(Vector3.forward) * 100;
-        Debug.DrawRay(Camera.main.transform.position, forward, Color.green);
-        Hit = Physics.Raycast(Camera.main.transform.position, (forward), out hit);
-        return Hit;
-    }
-    private bool MultyRayCast(Vector3 dir)
-    {
-
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, dir, 100.0f);
+        hits = Physics.RaycastAll(transform.position, dir, 1000.0f);
         for (int i = 0; i < hits.Length; i++)
         {
             hit = hits[i];
             Collider Hit = hit.transform.GetComponent<Collider>();
-            Debug.DrawRay(transform.position, dir, Color.green);
+            Debug.DrawRay(transform.position, dir, _color);
             if (Hit)
             {
-                if (hit.collider.tag == "ground")
-                {
-                    return Hit;
-                }
+
+                return Hit;
             }
         }
         return false;
@@ -66,8 +68,18 @@ public class TargetController : MonoBehaviour
     {
         if (objects.Length > 0)
         {
-            Instantiate(objects[0], _target.transform.position, Quaternion.identity);
+            Instantiate(objects[0], new Vector3(_target.transform.position.x,_target.transform.position.y+ 2, _target.transform.position.z), Quaternion.identity);
+            Debug.Log(PosNewObject);
         }
 
+    }
+    private float FindNewPos()
+    {
+     
+        if (MultyRayCast(_target.transform.up, Color.red))
+        {
+            return PosNewObject = hit.point.y;           
+        }
+        return 0;
     }
 }

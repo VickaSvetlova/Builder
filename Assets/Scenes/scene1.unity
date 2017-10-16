@@ -202,7 +202,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!23 &135756328
 MeshRenderer:
@@ -574,6 +574,7 @@ MonoBehaviour:
   _target: {fileID: 401340385}
   objects:
   - {fileID: 135756326}
+  _setObject: 1
 --- !u!1 &1252084150
 GameObject:
   m_ObjectHideFlags: 0

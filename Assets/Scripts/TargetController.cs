@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class TargetController : MonoBehaviour
 {
@@ -13,39 +14,42 @@ public class TargetController : MonoBehaviour
     public GameObject _target;
     public GameObject[] objects;
     private float PosNewObject;
-    public bool _setObject=true;
+    public bool _setObject = true;
     private Color _color = Color.green;
  
 
 
     private void Start()
     {
-        cam = Camera.main;
+        cam = Camera.main;          
     }
     private void LateUpdate()
     {
-        if (_setObject)
-        {
-            if (MultyRayCast(cam.transform.forward, Color.green))
+       
+            if (_setObject)
             {
-                _target.active = true;
-                if (hit.transform.tag == _nameTag)
+                if (MultyRayCast(cam.transform.forward, Color.green))
                 {
-                    _target.transform.position = new Vector3(hit.point.x, hit.point.y + 0.01f, hit.point.z);
+                    _target.active = true;
+                    if (hit.transform.tag == _nameTag)
+                    {
+                        _target.transform.position = new Vector3(hit.point.x, hit.point.y + 0.01f, hit.point.z);
+                    }
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                    return;
+                        FloorDetected.Invoke();
+                        CreateObject();
+                    }
                 }
-                if (Input.GetMouseButtonUp(0))
+                else
                 {
-                    FloorDetected.Invoke();
-                    CreateObject();
+                    _target.active = false;
                 }
             }
-            else
-            {
-                _target.active = false;
-            }
-        }
+        
 
-    }
+    }    
 
     private bool MultyRayCast(Vector3 dir, Color _color)
     {
@@ -64,12 +68,15 @@ public class TargetController : MonoBehaviour
         }
         return false;
     }
-    private void CreateObject()
+    public void CreateObject()
     {
-        if (objects.Length > 0)
+        if (_setObject)
         {
-            Instantiate(objects[0], new Vector3(_target.transform.position.x,_target.transform.position.y+ 2, _target.transform.position.z), Quaternion.identity);
-            Debug.Log(PosNewObject);
+            if (objects.Length > 0)
+            {
+                Instantiate(objects[0], new Vector3(_target.transform.position.x, _target.transform.position.y + 2, _target.transform.position.z), Quaternion.identity);
+                Debug.Log(PosNewObject);
+            }
         }
 
     }

@@ -70,11 +70,11 @@ public class TargetController : MonoBehaviour
     }
     public void CreateObject()
     {
-        if (_setObject)
+        if (_target.active==true)
         {
             if (objects.Length > 0)
             {
-                Instantiate(objects[0], new Vector3(_target.transform.position.x, _target.transform.position.y + 2, _target.transform.position.z), Quaternion.identity);
+                Instantiate(objects[0], new Vector3(_target.transform.position.x, _target.transform.position.y, _target.transform.position.z), Quaternion.identity);
                 Debug.Log(PosNewObject);
             }
         }

@@ -514,7 +514,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7f114e6b62ad5134b9ba4e0a01ddc050, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f114e6b62ad5134b9ba4e0a01ddc050, type: 2}
@@ -3143,7 +3143,7 @@ MonoBehaviour:
   Search: 0
   CurrentSelectable: {fileID: 0}
   Reselect: 0
-  AutoDeselect: 0
+  AutoDeselect: 1
   IgnoreGuiFingers: 0
   RequiredTapCount: 0
   RequiredTapInterval: 0

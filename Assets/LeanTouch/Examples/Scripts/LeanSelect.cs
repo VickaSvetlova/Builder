@@ -25,8 +25,9 @@ namespace Lean.Touch
 			DeselectAndSelect,
 			SelectAgain
 		}
+       
 
-		public SelectType SelectUsing;
+        public SelectType SelectUsing;
 
 		[Tooltip("This stores the layers we want the raycast/overlap to hit (make sure this GameObject's layer is included!)")]
 		public LayerMask LayerMask = Physics.DefaultRaycastLayers;
@@ -115,6 +116,7 @@ namespace Lean.Touch
 
 					// Change current
 					CurrentSelectable = selectable;
+                   
 
 					// Call select event on current
 					CurrentSelectable.Select(finger);

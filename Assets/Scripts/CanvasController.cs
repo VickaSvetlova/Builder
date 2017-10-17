@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class CanvasController : MonoBehaviour
     private bool rotateActive = true;
     public GameObject menu;
     public GameObject addBooton;
+    public GameObject text;
     public TargetController targetController;
     private void Start()        
     {
@@ -40,7 +42,17 @@ public class CanvasController : MonoBehaviour
     {
         addBooton.active = false;
         menu.active = false;
-        targetController._setObject = true;
         targetController.modelNumber = numberModel;
+        Invoke("timeOutSetObject", 1);
+    }
+    public void DestroyAll()
+    {
+        targetController.desatroqAll();
+    }
+
+    private void timeOutSetObject()
+    {
+        text.active = true;
+        targetController._setObject = true;        
     }
 }

@@ -5,6 +5,8 @@ namespace Lean.Touch
 	// This script allows you to select LeanSelectable components using finger taps
 	public class LeanTapSelect : LeanSelect
 	{
+       
+
 		[Tooltip("Ignore fingers with StartedOverGui?")]
 		public bool IgnoreGuiFingers = true;
 

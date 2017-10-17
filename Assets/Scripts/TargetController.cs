@@ -14,42 +14,40 @@ public class TargetController : MonoBehaviour
     public GameObject _target;
     public GameObject[] objects;
     private float PosNewObject;
-    public bool _setObject = true;
+    public bool _setObject { get; set; }
     private Color _color = Color.green;
- 
+    public CanvasController canvasController;
 
+    public int modelNumber { get; set; }
 
     private void Start()
     {
-        cam = Camera.main;          
+        cam = Camera.main;
     }
     private void LateUpdate()
     {
-       
-            if (_setObject)
+        if (_setObject)
+        {
+            if (MultyRayCast(cam.transform.forward, Color.green))
             {
-                if (MultyRayCast(cam.transform.forward, Color.green))
+                _target.active = true;
+                if (hit.transform.tag == _nameTag)
                 {
-                    _target.active = true;
-                    if (hit.transform.tag == _nameTag)
-                    {
-                        _target.transform.position = new Vector3(hit.point.x, hit.point.y + 0.01f, hit.point.z);
-                    }
-                    if (Input.GetMouseButtonUp(0))
-                    {
-                    return;
-                        FloorDetected.Invoke();
-                        CreateObject();
-                    }
-                }
-                else
-                {
-                    _target.active = false;
+                    _target.transform.position = new Vector3(hit.point.x, hit.point.y + 0.01f, hit.point.z);
                 }
             }
-        
-
-    }    
+            else
+            {
+                _target.active = false;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftControl)|| Input.touchCount == 1)
+            {
+                FloorDetected.Invoke();
+                CreateObject(modelNumber);
+            }
+           
+        }
+    }
 
     private bool MultyRayCast(Vector3 dir, Color _color)
     {
@@ -62,30 +60,31 @@ public class TargetController : MonoBehaviour
             Debug.DrawRay(transform.position, dir, _color);
             if (Hit)
             {
-
                 return Hit;
             }
         }
         return false;
     }
-    public void CreateObject()
+    public void CreateObject(int numberModel)
     {
-        if (_target.active==true)
+        if (_target.active == true && numberModel != null)
         {
             if (objects.Length > 0)
             {
-                Instantiate(objects[0], new Vector3(_target.transform.position.x, _target.transform.position.y, _target.transform.position.z), Quaternion.identity);
-                Debug.Log(PosNewObject);
+                Instantiate(objects[numberModel], new Vector3(_target.transform.position.x, _target.transform.position.y + objects[numberModel].GetComponent<Renderer>().bounds.size.y / 2, _target.transform.position.z), Quaternion.identity);
+                _setObject = false;
+                canvasController.addBooton.active = true;
+
             }
         }
 
     }
     private float FindNewPos()
     {
-     
+
         if (MultyRayCast(_target.transform.up, Color.red))
         {
-            return PosNewObject = hit.point.y;           
+            return PosNewObject = hit.collider.GetComponent<Renderer>().bounds.size.y / 2;
         }
         return 0;
     }

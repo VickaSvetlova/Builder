@@ -17,8 +17,8 @@ namespace Lean.Touch
 		[Tooltip("The camera we will be moving")]
 		public Camera Camera;
 
-		[Tooltip("The rotation axis used for non-relative rotations")]
-		public Vector3 RotateAxis = Vector3.forward;
+        [Tooltip("The rotation axis used for non-relative rotations")]
+        public Vector3 RotateAxis = Vector3.forward;
 
 		[Tooltip("Should the rotation be performanced relative to the finger center?")]
 		public bool Relative;

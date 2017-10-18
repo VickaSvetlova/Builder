@@ -6,7 +6,7 @@ namespace Lean.Touch
 	public class LeanTranslate : MonoBehaviour
 	{
 		[Tooltip("Ignore fingers with StartedOverGui?")]
-		public bool IgnoreGuiFingers = true;
+		public bool IgnoreGuiFingers = false;
 
 		[Tooltip("Ignore fingers if the finger count doesn't match? (0 = any)")]
 		public int RequiredFingerCount;

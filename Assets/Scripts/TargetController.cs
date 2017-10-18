@@ -19,7 +19,7 @@ public class TargetController : MonoBehaviour
     private Color _color = Color.green;
     public CanvasController canvasController;
     private List<GameObject> clones = new List<GameObject>();
-
+    public float angles=90;
 
     public int modelNumber { get; set; }
 
@@ -75,8 +75,11 @@ public class TargetController : MonoBehaviour
         {
             if (objects.Length > 0)
             {
-               GameObject  clon = Instantiate(objects[numberModel], new Vector3(_target.transform.position.x, _target.transform.position.y + objects[numberModel].GetComponent<Renderer>().bounds.size.y / 2, _target.transform.position.z), Quaternion.identity);
+               GameObject  clon = Instantiate(objects[numberModel], new Vector3(_target.transform.position.x, objects[numberModel].GetComponent<Collider>().bounds.extents.y / 2,
+                   _target.transform.position.z), Quaternion.AngleAxis(angles, Vector3.right));
+               // clon.AddComponent<ScriptAddComponent>();
                 clones.Add(clon);
+
                 _setObject = false;
                 canvasController.addBooton.active = true;
 

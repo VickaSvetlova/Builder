@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Lean.Touch
 {
 	// This script makes handling selectable actions easier
-	[RequireComponent(typeof(LeanSelectable))]
+	//[RequireComponent(typeof(LeanSelectable))]
 	public abstract class LeanSelectableBehaviour : MonoBehaviour
 	{
 		[System.NonSerialized]
@@ -29,10 +29,18 @@ namespace Lean.Touch
 				selectable = GetComponent<LeanSelectable>();
 			}
 
-			// Hook LeanSelectable events
-			selectable.OnSelect.AddListener(OnSelect);
-			selectable.OnSelectUp.AddListener(OnSelectUp);
-			selectable.OnDeselect.AddListener(OnDeselect);
+            // Hook LeanSelectable events
+            if (selectable != null)
+            {
+                selectable.OnSelect.AddListener(OnSelect);
+                selectable.OnSelectUp.AddListener(OnSelectUp);
+                selectable.OnDeselect.AddListener(OnDeselect);
+            }
+            else
+            {
+                selectable = GetComponent<LeanSelectable>();
+            }
+            
 		}
 
 		protected virtual void OnDisable()

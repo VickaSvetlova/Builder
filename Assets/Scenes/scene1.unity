@@ -392,7 +392,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7f114e6b62ad5134b9ba4e0a01ddc050, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f114e6b62ad5134b9ba4e0a01ddc050, type: 2}
@@ -3166,6 +3166,7 @@ MonoBehaviour:
   - {fileID: 1092032328853910, guid: 83aae98f19433bf44bb2613869ec2b6c, type: 2}
   - {fileID: 1925272159591564, guid: 0a83aafbe8d8ac048bc2a6e9585171b4, type: 2}
   canvasController: {fileID: 295871825}
+  angles: -90
 --- !u!114 &1165618314
 MonoBehaviour:
   m_ObjectHideFlags: 0

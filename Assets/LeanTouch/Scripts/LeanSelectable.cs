@@ -54,8 +54,10 @@ namespace Lean.Touch
 		{
 			isSelected      = true;
 			SelectingFinger = finger;
-
-			OnSelect.Invoke(finger);
+            if (OnSelect != null)
+            {
+                OnSelect.Invoke(finger);
+            }
 		}
 
 		[ContextMenu("Deselect")]
@@ -63,6 +65,7 @@ namespace Lean.Touch
 		{
 			if (SelectingFinger != null)
 			{
+                
 				OnSelectUp.Invoke(SelectingFinger);
 
 				SelectingFinger = null;
@@ -95,9 +98,12 @@ namespace Lean.Touch
 			// If the finger went up, it's no longer selecting anything
 			if (finger == SelectingFinger)
 			{
-				OnSelectUp.Invoke(SelectingFinger);
+                if (OnSelect!=null)
+                {
+                    OnSelectUp.Invoke(SelectingFinger);
 
-				SelectingFinger = null;
+                    SelectingFinger = null;
+                }
 			}
 		}
 	}

@@ -797,6 +797,131 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &301070581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 301070582}
+  - component: {fileID: 301070586}
+  - component: {fileID: 301070585}
+  - component: {fileID: 301070584}
+  - component: {fileID: 301070583}
+  m_Layer: 0
+  m_Name: UniFBX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &301070582
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 301070581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.000009687617, z: 2.433864}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &301070583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 301070581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e7b74cdf2117a42877edf3eb04e23c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ufbx: {fileID: 301070584}
+--- !u!114 &301070584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 301070581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24933cb66b9977f4f8761f1fe319616e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setting:
+    paths:
+      urlModels: C:\Users\vicka\Project\Blender\
+      urlTextures: file:///C:/models/tex/
+      filename: SHIP2
+      runnningMethode: 0
+      objectPerFrame: 5
+      maxThreads: 2
+    meshes:
+      scaleFactor: 0.01
+      meshImport: 0
+      meshMethode: 0
+      normalMethode: 2
+      colliderType: 0
+      rendererOnLoad: 1
+    materials:
+      materialImported: 0
+      shaderType: 0
+      standardMaterial: {fileID: 0}
+      colorDefault: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    textures:
+      textureImported: 1
+      colormaps: 1
+      normalmaps: 0
+      heightmaps: 0
+      occlusionmaps: 0
+      emissionmaps: 0
+      detailmasks: 0
+    animations:
+      animationImported: 1
+      animationMethode: 0
+      animatorController: {fileID: 0}
+      animationWrap: 2
+      frameRate: 30
+    lights:
+      lightImported: 1
+      importMethode: 1
+      lightType: 2
+      shadows: 0
+      renderMode: 0
+      lightRange: 100
+    cameras:
+      cameraImported: 1
+      cameraClearFlags: 1
+    splines:
+      splineImported: 1
+      splineDrawing: 1
+    Status: 0
+--- !u!114 &301070585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 301070581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6865114f4a40c4bab450390f030a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &301070586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 301070581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6865114f4a40c4bab450390f030a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &330431450
 GameObject:
   m_ObjectHideFlags: 0

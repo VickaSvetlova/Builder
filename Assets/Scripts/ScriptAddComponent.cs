@@ -31,7 +31,8 @@ public class ScriptAddComponent : MonoBehaviour
         thisObj.GetComponent<LeanScale>().ScaleMin = new Vector3(0.1f, 0.1f, 0.1f);
         thisObj.GetComponent<LeanScale>().ScaleMax = thisObj.GetComponent<Transform>().transform.localScale;
 
-        //thisObj.GetComponent<LeanSelectable>().OnSelect = new LeanSelectable.LeanFingerEvent();
+        thisObj.GetComponent<LeanSelectable>().OnSelect.AddListener(delegate{ thisObj.GetComponent<Rigidbody>().isKinematic = true; });
+        thisObj.GetComponent<LeanSelectable>().OnDeselect.AddListener(delegate { thisObj.GetComponent<Rigidbody>().isKinematic = false; });
     }
     public void gravity(bool offOn)
     {
